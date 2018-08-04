@@ -2,7 +2,6 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs'
@@ -29,15 +28,12 @@ let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_lint_on_save = 1 " run on save
 let g:ale_lint_on_text_changed = 0 " don't run on change
-" set Prettier up to run on save
-let g:ale_fixers = {}
-"let g:ale_fixers['javascript'] = [ 'eslint', 'flow', 'prettier']
+let g:ale_fixers = {'javascript':  [ 'eslint', 'prettier']}
 let g:ale_linters = { 'javascript': ['eslint', 'flow', 'prettier'] }
 " user config files
 let g:ale_javascript_prettier_use_local_config = 1
+" set Prettier up to run on save
 let g:ale_fix_on_save = 1
-"let g:ale_javascript_prettier_options = '--use-tabs --tab-width 2 --no-semi --single-quote --trailing-comma es5'
-" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
 Plugin 'vim-airline/vim-airline'
 
