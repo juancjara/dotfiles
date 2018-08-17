@@ -1,0 +1,34 @@
+alias gs="git status"
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git pull origin"
+alias gP="git push origin"
+alias gch="git checkout"
+alias gcb="git checkout -b"
+alias guc="git reset --soft HEAD^"
+
+alias nr="npm run"
+alias ns="npm start"
+alias rna="react-native run-android"
+
+alias c="clear"
+alias l="ls"
+alias la="ls -la"
+alias aliases="vi ~/.aliases"
+alias reload=". ~/.aliases"
+
+alias va=". venv/bin/activate"
+alias pyr="./manage.py runserver"
+
+alias tconf="vi ~/.tmux.conf"
+alias tn="tmux new -s"
+alias tl="tmux ls"
+alias ta="tmux attach -t"
+alias tk="tmux kill-session -t"
+
+alias androidstudio="sh /usr/local/android-studio/bin/studio.sh"
+alias androidStudio="androidstudio"
+
+alias front="cd /var/www/saes.v2/media/frontend"
+alias n="nvm"
+alias vimrc="vim ~/.vimrc"

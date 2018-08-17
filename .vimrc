@@ -11,16 +11,16 @@ let g:jsx_ext_required = 0 "not only work on jsx files
 
 Plugin 'mxw/vim-jsx'
 
-Plugin 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<Tab>'
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-let g:user_emmet_mode='n'    "only enable normal mode functions.
-let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-let g:user_emmet_mode='a'    "enable all function in all mode.
+"Plugin 'mattn/emmet-vim'
+"let g:user_emmet_leader_key='<Tab>'
+" let g:user_emmet_settings = {
+"  \  'javascript.jsx' : {
+"    \      'extends' : 'jsx',
+"    \  },
+"  \}
+"let g:user_emmet_mode='n'    "only enable normal mode functions.
+"let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+"'let g:user_emmet_mode='a'    "enable all function in all mode.
 
 Plugin 'w0rp/ale'
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
@@ -50,6 +50,15 @@ Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_override_sign_column_highlight = 0
 
+Plugin 'SirVer/ultisnips'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir="~/UltiSnips"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 Plugin 'tpope/vim-fugitive'
 set diffopt=vertical
@@ -118,5 +127,4 @@ set ignorecase smartcase " insensitive search
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 nnoremap <leader><space> :nohlsearch<CR> " turn off search highlight
-
-
+set rtp^=$HOME
