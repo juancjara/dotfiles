@@ -6,6 +6,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs'
 
+Plugin 'jparise/vim-graphql'
+" Set the filetype based on the file's extension, overriding any
+" 'filetype' that has already been set
+au BufRead,BufNewFile *.prisma set filetype=graphql
+
 Plugin 'pangloss/vim-javascript'
 let g:jsx_ext_required = 0 "not only work on jsx files
 
@@ -28,8 +33,12 @@ let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_lint_on_save = 1 " run on save
 let g:ale_lint_on_text_changed = 0 " don't run on change
-let g:ale_fixers = {'javascript':  [ 'eslint', 'prettier']}
-let g:ale_linters = { 'javascript': ['eslint', 'flow', 'prettier'] }
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] =  [ 'eslint', 'prettier' ]
+let g:ale_fixers['css'] =  [ 'prettier' ]
+let g:ale_linters = {}
+let g:ale_linters['javascript'] = [ 'eslint', 'flow', 'prettier' ]
+let g:ale_linters['css'] = [ 'prettier' ]
 " user config files
 let g:ale_javascript_prettier_use_local_config = 1
 " set Prettier up to run on save
@@ -40,9 +49,16 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 nmap ,n :NERDTreeFind<CR>
-set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.swm,*swn,*swo,*.class,*.hg,*.DS_Store,*.min.*
 let g:NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
+"open nerdtree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"close vim if the only window left is a NerdTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
 
 Plugin 'xuyuanp/nerdtree-git-plugin'
 
@@ -101,12 +117,13 @@ let g:airline_theme='oceanicnext'
 
 filetype plugin indent on " required
 
+set autoread "when a file is changed outside vim automatically read it again
 set number " show line numbers
 
 set tabstop=2 " tabs visual mode
 set softtabstop=2 " tabs when editing
 set shiftwidth=2 " size of indent
-set expandtab " tabs are spaces
+"set expandtab " tabs are spaces
 
 " move vertically by visual line
 nnoremap j gj
