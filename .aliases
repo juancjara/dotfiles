@@ -7,6 +7,9 @@ alias gch="git checkout"
 alias gcb="git checkout -b"
 alias guc="git reset --soft HEAD^"
 
+alias ys="yarn start"
+alias yrw="yarn run watch"
+alias nrw="npm run watch"
 alias nr="npm run"
 alias ns="npm start"
 alias rna="react-native run-android"
@@ -29,6 +32,9 @@ alias tk="tmux kill-session -t"
 alias androidstudio="sh /usr/local/android-studio/bin/studio.sh"
 alias androidStudio="androidstudio"
 
-alias front="cd /var/www/saes.v2/media/frontend"
 alias n="nvm"
 alias vimrc="vim ~/.vimrc"
+
+function docker_bash () {
+  sudo docker exec -it $1 /bin/bash
+}
